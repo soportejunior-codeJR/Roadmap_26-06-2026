@@ -2,14 +2,14 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Bundled Page</title>
+  <title>Dashboard — Jóvenes creaTIvos · Fundación ROFÉ</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #14100b; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
-    #__bundler_loading { position: fixed; bottom: 20px; right: 20px; font: 13px/1.4 -apple-system, BlinkMacSystemFont, sans-serif; color: #666; background: #fff; padding: 8px 14px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.12); z-index: 10000; }
-    #__bundler_thumbnail { position: fixed; inset: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #14100b; z-index: 9999; }
+    body { background: #F4F7FB; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Century Gothic', 'Trebuchet MS', Arial, sans-serif; }
+    #__bundler_loading { position: fixed; bottom: 20px; right: 20px; font: 13px/1.4 'Century Gothic', 'Trebuchet MS', Arial, sans-serif; color: #406C9E; background: #fff; padding: 8px 14px; border-radius: 8px; box-shadow: 0 1px 4px rgba(64,108,158,0.15); z-index: 10000; border-left: 3px solid #406C9E; }
+    #__bundler_thumbnail { position: fixed; inset: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #F4F7FB; z-index: 9999; }
     #__bundler_thumbnail svg { width: 100%; height: 100%; object-fit: contain; }
-    #__bundler_placeholder { color: #999; font-size: 14px; }
+    #__bundler_placeholder { color: #6B7A94; font-size: 14px; }
   </style>
   <noscript>
     <style>#__bundler_loading { display: none; }</style>
@@ -21,15 +21,41 @@
 <body>
   <div id="__bundler_thumbnail">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <rect width="1200" height="800" fill="#14100b"></rect>
-    <rect x="200" y="150" width="340" height="44" rx="8" fill="#c8a55a"></rect>
-    <rect x="200" y="220" width="500" height="44" rx="8" fill="#3a3024"></rect>
-    <rect x="200" y="360" width="240" height="180" rx="20" fill="#221a12" stroke="#df5b5b" stroke-width="3"></rect>
-    <rect x="480" y="360" width="240" height="180" rx="20" fill="#221a12" stroke="#c8a55a" stroke-width="3"></rect>
-    <rect x="760" y="360" width="240" height="180" rx="20" fill="#221a12" stroke="#74c08a" stroke-width="3"></rect>
-    <circle cx="232" cy="400" r="9" fill="#df5b5b"></circle>
-    <circle cx="512" cy="400" r="9" fill="#c8a55a"></circle>
-    <circle cx="792" cy="400" r="9" fill="#74c08a"></circle>
+    <!-- Fondo -->
+    <rect width="1200" height="800" fill="#F4F7FB"></rect>
+    <!-- Borde superior marca -->
+    <rect width="1200" height="4" fill="#406C9E"></rect>
+    <!-- Título (placeholder) -->
+    <rect x="200" y="150" width="340" height="36" rx="6" fill="#406C9E"></rect>
+    <rect x="200" y="204" width="500" height="22" rx="4" fill="#DDE4ED"></rect>
+    <!-- Tabs -->
+    <rect x="200" y="246" width="120" height="6" rx="3" fill="#406C9E"></rect>
+    <rect x="340" y="246" width="100" height="6" rx="3" fill="#DDE4ED"></rect>
+    <rect x="460" y="246" width="110" height="6" rx="3" fill="#DDE4ED"></rect>
+    <!-- Separador tabs -->
+    <rect x="200" y="252" width="800" height="1" fill="#DDE4ED"></rect>
+    <!-- Tarjetas KPI -->
+    <rect x="200" y="290" width="170" height="90" rx="8" fill="#FFFFFF" stroke="#DDE4ED" stroke-width="1.5"></rect>
+    <rect x="200" y="290" width="170" height="3" rx="2" fill="#406C9E"></rect>
+    <rect x="390" y="290" width="170" height="90" rx="8" fill="#FFFFFF" stroke="#DDE4ED" stroke-width="1.5"></rect>
+    <rect x="390" y="290" width="170" height="3" rx="2" fill="#6EA050"></rect>
+    <rect x="580" y="290" width="170" height="90" rx="8" fill="#FFFFFF" stroke="#DDE4ED" stroke-width="1.5"></rect>
+    <rect x="580" y="290" width="170" height="3" rx="2" fill="#EEC935"></rect>
+    <rect x="770" y="290" width="170" height="90" rx="8" fill="#FFFFFF" stroke="#DDE4ED" stroke-width="1.5"></rect>
+    <rect x="770" y="290" width="170" height="3" rx="2" fill="#C12D4C"></rect>
+    <!-- Tabla -->
+    <rect x="200" y="400" width="800" height="36" rx="0" fill="#406C9E"></rect>
+    <rect x="200" y="436" width="800" height="28" rx="0" fill="#FFFFFF"></rect>
+    <rect x="200" y="464" width="800" height="28" rx="0" fill="#F4F7FB"></rect>
+    <rect x="200" y="492" width="800" height="28" rx="0" fill="#FFFFFF"></rect>
+    <rect x="200" y="520" width="800" height="28" rx="0" fill="#F4F7FB"></rect>
+    <rect x="200" y="548" width="800" height="28" rx="0" fill="#FFFFFF"></rect>
+    <!-- Puntos semáforo en tabla -->
+    <circle cx="940" cy="450" r="7" fill="#6EA050"></circle>
+    <circle cx="940" cy="478" r="7" fill="#EEC935"></circle>
+    <circle cx="940" cy="506" r="7" fill="#C12D4C"></circle>
+    <circle cx="940" cy="534" r="7" fill="#6EA050"></circle>
+    <circle cx="940" cy="562" r="7" fill="#6EA050"></circle>
   </svg>
 </div>
   <div id="__bundler_loading">Unpacking...</div>
