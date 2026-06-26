@@ -1,0 +1,208 @@
+
+<style>
+  .panel { padding: 1.5rem 0; font-family: var(--font-sans); }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .filter-btn { font-size: 12px; padding: 4px 12px; border-radius: var(--radius); border: 0.5px solid var(--border-strong); background: var(--surface-2); color: var(--text-secondary); cursor: pointer; transition: all 0.15s; }
+  .filter-btn.active, .filter-btn:hover { background: var(--bg-accent); color: var(--text-accent); border-color: var(--border-accent); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
+  th { font-size: 11px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; padding: 0 10px 8px; text-align: left; border-bottom: 0.5px solid var(--border); }
+  td { padding: 10px; vertical-align: top; border-bottom: 0.5px solid var(--border); color: var(--text-primary); }
+  tr:last-child td { border-bottom: none; }
+  tr.hidden { display: none; }
+  .num { color: var(--text-muted); font-size: 12px; }
+  .badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: var(--radius); white-space: nowrap; }
+  .p1 { background: #FCEBEB; color: #A32D2D; }
+  .p2 { background: #FAEEDA; color: #854F0B; }
+  .p3 { background: #EAF3DE; color: #3B6D11; }
+  .p4 { background: #E1F5EE; color: #0F6E56; }
+  .ef-low  { background: #EEEDFE; color: #3C3489; }
+  .ef-med  { background: #E6F1FB; color: #185FA5; }
+  .ef-high { background: #FBEAF0; color: #993556; }
+  .tag { display: inline-block; font-size: 11px; padding: 2px 7px; border-radius: var(--radius); background: var(--surface-1); color: var(--text-secondary); border: 0.5px solid var(--border); margin: 2px 2px 0 0; }
+  .item-name { font-weight: 500; font-size: 13px; margin-bottom: 4px; color: var(--text-primary); }
+  .item-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+  col.c0 { width: 32px; }
+  col.c1 { width: 34%; }
+  col.c2 { width: 14%; }
+  col.c3 { width: 14%; }
+  col.c4 { width: 14%; }
+  col.c5 { width: 24%; }
+</style>
+
+<div class="panel">
+  <div class="filters" id="filters">
+    <button class="filter-btn active" onclick="filter('all', this)">Todos</button>
+    <button class="filter-btn" onclick="filter('p1', this)">🔴 Crítico</button>
+    <button class="filter-btn" onclick="filter('p2', this)">🟠 Alto</button>
+    <button class="filter-btn" onclick="filter('p3', this)">🟡 Medio</button>
+    <button class="filter-btn" onclick="filter('p4', this)">🟢 Bajo</button>
+    <button class="filter-btn" onclick="filter('low', this)">Esfuerzo bajo</button>
+  </div>
+
+  <table>
+    <colgroup>
+      <col class="c0"><col class="c1"><col class="c2"><col class="c3"><col class="c4"><col class="c5">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Tarea</th>
+        <th>Prioridad</th>
+        <th>Esfuerzo</th>
+        <th>Impacto</th>
+        <th>Herramientas / notas</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+
+      <tr data-p="p1" data-ef="low">
+        <td class="num">4</td>
+        <td>
+          <div class="item-name">Limpiar DB de correos</div>
+          <div class="item-desc">Filtrar dominios ≠ Gmail y corregir errores de digitación. Base sana antes de cualquier automatización.</div>
+        </td>
+        <td><span class="badge p1">🔴 Crítico</span></td>
+        <td><span class="badge ef-low">Bajo</span></td>
+        <td>Alto</td>
+        <td><span class="tag">Python</span><span class="tag">regex</span><span class="tag">Sheets API</span></td>
+      </tr>
+
+      <tr data-p="p1" data-ef="low">
+        <td class="num">1</td>
+        <td>
+          <div class="item-name">Migrar Sheets → SQL</div>
+          <div class="item-desc">Fundación de todo el ecosistema. Sin DB estructurada el resto de automatizaciones quedan en el aire.</div>
+        </td>
+        <td><span class="badge p1">🔴 Crítico</span></td>
+        <td><span class="badge ef-low">Bajo</span></td>
+        <td>Muy alto</td>
+        <td><span class="tag">Supabase</span><span class="tag">Python</span><span class="tag">Drive API</span></td>
+      </tr>
+
+      <tr data-p="p1" data-ef="low">
+        <td class="num">11</td>
+        <td>
+          <div class="item-name">Script encriptamiento datos IA</div>
+          <div class="item-desc">Permite usar IA con datos reales sin exponer info confidencial. Habilita muchos casos siguientes.</div>
+        </td>
+        <td><span class="badge p1">🔴 Crítico</span></td>
+        <td><span class="badge ef-low">Bajo</span></td>
+        <td>Alto</td>
+        <td><span class="tag">Python</span><span class="tag">cryptography</span><span class="tag">Sheets API</span></td>
+      </tr>
+
+      <tr data-p="p2" data-ef="med">
+        <td class="num">3</td>
+        <td>
+          <div class="item-name">Automatizar oportunidades → DB mujeres ROFE</div>
+          <div class="item-desc">Cuando vence el tiempo de la info, mover registro automáticamente a la DB destino.</div>
+        </td>
+        <td><span class="badge p2">🟠 Alto</span></td>
+        <td><span class="badge ef-med">Medio</span></td>
+        <td>Alto</td>
+        <td><span class="tag">Supabase</span><span class="tag">cron / triggers</span></td>
+      </tr>
+
+      <tr data-p="p2" data-ef="med">
+        <td class="num">5</td>
+        <td>
+          <div class="item-name">Mejora de formularios y feedback</div>
+          <div class="item-desc">Rediseñar preguntas para capturar datos más accionables y ayuda a entender el punto 6.</div>
+        </td>
+        <td><span class="badge p2">🟠 Alto</span></td>
+        <td><span class="badge ef-med">Medio</span></td>
+        <td>Alto</td>
+        <td><span class="tag">Google Forms</span><span class="tag">análisis UX</span></td>
+      </tr>
+
+      <tr data-p="p2" data-ef="med">
+        <td class="num">6</td>
+        <td>
+          <div class="item-name">Estudio por qué no se unen al siguiente curso</div>
+          <div class="item-desc">Mapear patrones de deserción. Requiere llamadas + análisis; se nutre de los nuevos datos del form.</div>
+        </td>
+        <td><span class="badge p2">🟠 Alto</span></td>
+        <td><span class="badge ef-high">Alto</span></td>
+        <td>Muy alto</td>
+        <td><span class="tag">CRM</span><span class="tag">entrevistas</span><span class="tag">análisis cualitativo</span></td>
+      </tr>
+
+      <tr data-p="p2" data-ef="med">
+        <td class="num">2</td>
+        <td>
+          <div class="item-name">Automatización de Zoom</div>
+          <div class="item-desc">Aplica tanto al flujo general de reuniones como a la apertura automática de salas (punto 10).</div>
+        </td>
+        <td><span class="badge p2">🟠 Alto</span></td>
+        <td><span class="badge ef-med">Medio</span></td>
+        <td>Medio</td>
+        <td><span class="tag">Zoom API</span><span class="tag">cron</span><span class="tag">Zapier/n8n</span></td>
+      </tr>
+
+      <tr data-p="p3" data-ef="med">
+        <td class="num">9</td>
+        <td>
+          <div class="item-name">Publicar datos Sheets → website</div>
+          <div class="item-desc">Sincronización automática entre la hoja y el sitio oficial. Depende de la migración a SQL.</div>
+        </td>
+        <td><span class="badge p3">🟡 Medio</span></td>
+        <td><span class="badge ef-med">Medio</span></td>
+        <td>Medio</td>
+        <td><span class="tag">API REST</span><span class="tag">CMS / webhook</span></td>
+      </tr>
+
+      <tr data-p="p3" data-ef="med">
+        <td class="num">10</td>
+        <td>
+          <div class="item-name">Apertura automática sala Zoom (panel mujeres)</div>
+          <div class="item-desc">Sala se abre 15 min antes del schedule. Se puede resolver junto con el punto 2.</div>
+        </td>
+        <td><span class="badge p3">🟡 Medio</span></td>
+        <td><span class="badge ef-low">Bajo</span></td>
+        <td>Medio</td>
+        <td><span class="tag">Zoom API</span><span class="tag">scheduler</span></td>
+      </tr>
+
+      <tr data-p="p3" data-ef="high">
+        <td class="num">7</td>
+        <td>
+          <div class="item-name">Zoom → YouTube → Website automático</div>
+          <div class="item-desc">Pipeline: grabación → subida a YT → link al sitio oficial. Requiere OAuth de YT y permisos correctos.</div>
+        </td>
+        <td><span class="badge p3">🟡 Medio</span></td>
+        <td><span class="badge ef-high">Alto</span></td>
+        <td>Medio</td>
+        <td><span class="tag">YouTube Data API</span><span class="tag">Zoom webhooks</span><span class="tag">n8n</span></td>
+      </tr>
+
+      <tr data-p="p4" data-ef="low">
+        <td class="num">8</td>
+        <td>
+          <div class="item-name">Publicar panel de novedades automático</div>
+          <div class="item-desc">Imagen pequeña generada (Canva/IA) y publicada en los canales. Rápido de implementar.</div>
+        </td>
+        <td><span class="badge p4">🟢 Bajo</span></td>
+        <td><span class="badge ef-low">Bajo</span></td>
+        <td>Bajo</td>
+        <td><span class="tag">Canva API</span><span class="tag">DALL-E / Flux</span><span class="tag">scheduler</span></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<script>
+function filter(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const rows = document.querySelectorAll('#tbody tr');
+  rows.forEach(row => {
+    if (type === 'all') { row.classList.remove('hidden'); return; }
+    if (type === 'low') {
+      row.classList.toggle('hidden', row.dataset.ef !== 'low');
+    } else {
+      row.classList.toggle('hidden', row.dataset.p !== type);
+    }
+  });
+}
+</script>
